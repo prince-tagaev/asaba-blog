@@ -1,0 +1,46 @@
+body{
+    background-color: #fafafa;
+}
+
+.alert-light{
+    border-color: #bfbfbf;
+    background-color: #fff;
+}
+
+footer{
+    width: 70%;
+    margin-left: 15%;
+}
+.form-register{
+    background-color: #ebebeb;
+    border: 1px solid #acacac;
+    padding: 10px;
+    box-sizing: border-box;
+    font-size: 20px;
+}
+
+.form-register.auth input, textarea{
+    display: block;
+    Width: 96%;
+    margin-top: 5px;
+    border: 1px solid silver;
+    border-radius: 5px;
+    padding: 2%;
+}
+
+
+.profile_style{
+    font-size: 25px;
+}
+
+.user_images{
+    width: 64px;
+    height: 64px;
+    border-radius: 50%;
+    margin-right: 15px;
+    margin-left: 20px;
+}
+
+.for_text{
+    text-transform: capitalize;
+}

@@ -1,0 +1,18 @@
+{% extends 'blog/base.html' %}
+{% load static %}
+
+
+{% block title %}
+{{title}}
+{% endblock %}
+
+
+{% block content %}
+<form method="post" class="form-register auth">
+    {% csrf_token %}
+    {{form.as_p}}
+    <button class="btn btn-warning" type="submit">Регистрация</button>
+    <hr>
+    <p>Уже зарегистрованы? <a href="{% url 'user' %}">Войти в личный кабинет</a> </p>
+</form>
+{% endblock %}

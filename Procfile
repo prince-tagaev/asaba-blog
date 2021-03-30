@@ -1,0 +1,1 @@
+web: gunicorn asaba.wsgi --log-file -

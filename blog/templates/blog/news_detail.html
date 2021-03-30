@@ -1,0 +1,33 @@
+{% extends 'blog/base.html' %}
+
+<div class="wrapper">
+    {%block title%}
+    {{title}}
+    {%endblock%}
+    <div class="header">
+
+    </div>
+    <div class="main">
+        {% block content %}
+
+        <div class="alert alert-light">
+            <h3>{{object.title}}</h3>
+            <p>{{ object.text|safe }}</p>
+            <div class="row">
+                <div>
+                    <img src="{{ object.avtor.profile.img.url }}" alt="{{ object.avtor }}" class="user_images">
+                </div>
+                <div class="mt-2 for_text">
+                    <span>Публикация: {{ object.date|date:"d E Y, в H:i:s" }}</span>
+                    <p> <b>Автор: </b> <a href="{% url 'user-news' object.avtor %}">{{ object.avtor }}</a></p>
+                </div>
+            </div>
+            {% if object.avtor == user %}
+            <hr>
+            <a href="{% url 'news-update' object.id %}" class="btn btn-info">Обновить статью</a>
+            <a href="{% url 'news-delete' object.id %}" class="btn btn-danger">Удалить статью</a>
+            {% endif %}
+        </div>
+        {% endblock %}
+    </div>
+</div>

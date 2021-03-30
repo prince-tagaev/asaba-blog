@@ -1,0 +1,13 @@
+{% extends 'blog/base.html' %}
+{% load static %}
+
+
+{% block title %}
+Страница авторизации
+{% endblock %}
+
+
+{% block content %}
+<h1>Вы успешно вышли с аккаунта</h1>
+<a href="{% url 'user' %}">Войти в личный кабинет снова</a>
+{% endblock %}

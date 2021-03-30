@@ -1,0 +1,127 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}{% endblock %}</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="{% static 'blog/css/style.css'%}">
+</head>
+
+<body>
+
+
+
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark" aria-label="Eleventh navbar example">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">ASABA</a>
+
+
+            <div class="collapse navbar-collapse" id="navbarsExample09">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="{% url 'home' %}">Home</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'contacts' %}">Contacts</a>
+                    </li>
+                </ul>
+
+            </div>
+            {% if not user.is_authenticated %}
+
+            <a href="{% url 'register' %}"><button class="btn btn-outline-warning">Регистрация</button></a>
+            <a href="{% url 'user' %}" class="ml-2"><button class="btn btn-outline-info">Войти</button></a>
+            {% else %}
+            <a href="{% url 'news-add' %}" class="mr-2"><button class="btn btn-outline-secondary">Добавить
+                    статью</button></a>
+            <a href="{% url 'profile' %}"><button class="btn btn-outline-warning">Профиль</button></a>
+            <a href="{% url 'exit' %}" class="ml-2"><button class="btn btn-outline-info">Выйти</button></a>
+            {% endif %}
+        </div>
+    </nav>
+
+    <!-- aside -->
+
+    <div class="container mt-5">
+        <div class="row">
+
+            <div class="col-md-8">
+                {% if messages %}
+                {% for mess in messages%}
+                <div class="alert alert-success">{{mess}}</div>
+                {% endfor%}
+                {% endif %}
+
+                {% block content %}
+                {% endblock %}
+            </div>
+
+            {%block aside%}
+            <aside class="col-md-4">
+                <h3> Боковая часть</h3>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dicta in deleniti nostrum
+                    consequatur vero expedita consequuntur. Quia minima dolores deserunt.</p>
+                <h4 class="mt-2">Интерсные статьи</h4>
+                <img src="https://imgd.aeplcdn.com/476x268/n/cw/ec/38904/mt-15-front-view.jpeg?q=80"
+                    class="img-thumbnail">
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Qui nostrum sunt nemo debitis
+                    aliquam illo obcaecati repellendus dolorem quidem suscipit.</p>
+                <a href="https://www.instagram.com/asaba.kg/" target="_blank">
+                    <button class="btn btn-warning">Look instagram</button>
+                </a>
+                <img src="https://whc.unesco.org/uploads/thumbs/site_0401_0003-1200-630-20140623150554.jpg"
+                    class="img-thumbnail mt-4">
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Qui nostrum sunt nemo debitis
+                    aliquam illo obcaecati repellendus dolorem quidem suscipit.</p>
+                <a href="https://www.instagram.com/chonkara_village/" target="_blank">
+                    <button class="btn btn-warning">Look instagram</button>
+                </a>
+            </aside>
+            {%endblock%}
+        </div>
+        <footer class="pt-4 my-md-5 pt-md-5 border-top">
+            <div class="row">
+                <div class="col-12 col-md">
+                    <img class="mb-2" src="{% static 'blog/images/asaba-logo.png'%}" alt="" width="24" height="19">
+                    <small class="d-block mb-3 text-muted">©2021</small>
+                </div>
+                <div class="col-6 col-md">
+                    <h5>Features</h5>
+                    <ul class="list-unstyled text-small">
+                        <li><a class="link-secondary" href="#">Cool stuff</a></li>
+                        <li><a class="link-secondary" href="#">Random feature</a></li>
+                        <li><a class="link-secondary" href="#">Team feature</a></li>
+                        <li><a class="link-secondary" href="#">Stuff for developers</a></li>
+                        <li><a class="link-secondary" href="#">Another one</a></li>
+                        <li><a class="link-secondary" href="#">Last time</a></li>
+                    </ul>
+                </div>
+                <div class="col-6 col-md">
+                    <h5>Resources</h5>
+                    <ul class="list-unstyled text-small">
+                        <li><a class="link-secondary" href="#">Resource</a></li>
+                        <li><a class="link-secondary" href="#">Resource name</a></li>
+                        <li><a class="link-secondary" href="#">Another resource</a></li>
+                        <li><a class="link-secondary" href="#">Final resource</a></li>
+                    </ul>
+                </div>
+                <div class="col-6 col-md">
+                    <h5>About</h5>
+                    <ul class="list-unstyled text-small">
+                        <li><a class="link-secondary" href="#">Team</a></li>
+                        <li><a class="link-secondary" href="#">Locations</a></li>
+                        <li><a class="link-secondary" href="#">Privacy</a></li>
+                        <li><a class="link-secondary" href="#">Terms</a></li>
+                    </ul>
+                </div>
+            </div>
+        </footer>
+    </div>
+</body>
+
+</html>
